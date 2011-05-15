@@ -15,7 +15,7 @@ setup(
     author='Artem Gnilov',
     author_email='boobsd@gmail.com',
     description='Adds oDesk API support to Flask',
-    long_description=__doc__,
+    long_description='',
     packages=['flaskext'],
     namespace_packages=['flaskext'],
     zip_safe=False,
@@ -23,7 +23,7 @@ setup(
     install_requires=[
         'Flask',
         'oauth2',
-        'odesk'
+        'python-odesk>=0.4'
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
