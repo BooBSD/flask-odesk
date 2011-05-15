@@ -46,6 +46,7 @@ Please keep in mind, that `url_prefix` can be whatever you like::
     app.register_module(odesk, url_prefix='/odesk')
 
 
+
 Using authorization
 -------------------
 
