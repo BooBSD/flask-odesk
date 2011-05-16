@@ -57,7 +57,7 @@ Please use the decorator `login_required` to close the access for anonymous user
     def admin():
         return "Welcome, oDesk user!"
 
-If you want to indicate login or logout links in the pattern, than you can use `url_for` function::
+If you want to indicate login or logout links in the template, than you can use `url_for` function::
 
     <a href="{{ url_for('odesk.login') }}">oDesk log in</a>
     <a href="{{ url_for('odesk.logout') }}">oDesk log out</a>
