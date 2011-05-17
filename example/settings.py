@@ -1,0 +1,4 @@
+DEBUG = True
+SECRET_KEY = 'blahblah'
+ODESK_KEY = '56adf4b66aaf61444a77796c17c0da53'
+ODESK_SECRET = 'e5864a0bcbed2085'

@@ -18,6 +18,14 @@ def is_authorized():
 odesk.is_authorized = is_authorized
 
 
+@odesk.app_context_processor
+def inject_is_authorized():
+    """
+    Context processor for is_authorized method
+    """
+    return {'odesk_is_authorized': is_authorized()}
+
+
 def get_access_token():
     """
     Get current access token and access token secret

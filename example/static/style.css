@@ -1,0 +1,92 @@
+body {
+    background: #fff none repeat scroll 0%;
+    color: #333;
+    font-family: "arial", "verdana", "tahoma";
+    font-size: 16px;
+    height: auto !important;
+    min-height: 100%;
+    padding: 0 1em;
+    margin: 0 auto;
+}
+
+h1, h2, h3 {
+    color: #555;
+    text-shadow: 1px 1px 1px #bbb;
+}
+
+a:hover {
+    color: #f00;
+}
+
+header {
+    height: 50px;
+    padding: 10px;
+}
+
+#logo {
+    display: inline-block;
+    float: left;
+}
+
+nav {
+    display: inline-block;
+    float: right;
+}
+
+nav ul {
+    display: inline;
+}
+
+nav li {
+    display: inline;
+}
+
+nav a {
+    color: #777;
+}
+
+.member {
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.15);
+    background-color: #ffc;
+    position: relative;
+    z-index: 0;
+}
+
+.member:hover {
+    z-index: 1;
+}
+
+.member div {
+    float: right;
+    height: 50px;
+}
+
+.portrait {
+    float: left;
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+}
+
+a.username {
+    display: block;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 6px;
+    color: #555;
+    text-shadow: 1px 1px 1px #bbb;
+}
+
+a.username:hover {
+    color: #f00;
+}
+
+footer {
+    padding: 20px;
+    margin-top: 50px;
+}

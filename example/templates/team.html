@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Your oDesk Team Room{% endblock %}
+{% block body %}
+<h2>Your oDesk Team Room</h2>
+{% for team in teams %}
+  <h3>{{ team.name }}</h3>
+  {% for s in team.snapshots %}
+    <article class="member" style="-webkit-transform: rotate({{ range(-20, 20)|random }}deg)">
+    <a href="{{ s.profile_url }}" target="_blank"><img src="{% if s.portrait_img %}{{ s.portrait_img }}{% else %}{{ url_for('static', filename='nouser.png') }}{% endif %}" border="0" class="portrait">
+    <div>
+    <a href="{{ s.profile_url }}" target="_blank" class="username">{{ s.user.first_name }} {{ s.user.last_name }}</a>
+    <img src="{{ s.report24_img }}">
+    </div>
+    </article>
+  {% endfor %}
+{% endfor %}
+{% endblock %}
