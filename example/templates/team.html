@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Your oDesk Team Room{% endblock %}
 {% block body %}
-<h2>Your oDesk Team Room</h2>
+<h2><a href="{{ url_for('team') }}">Your oDesk Team Room</a></h2>
 {% for team in teams %}
   <h3>{{ team.name }}</h3>
   {% for s in team.snapshots %}
