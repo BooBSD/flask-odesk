@@ -21,4 +21,4 @@ def team():
     return render_template('team.html', teams=teams)
 
 
-app.run(debug=True)
+app.run()
