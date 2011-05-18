@@ -5,14 +5,14 @@
 {% for team in teams %}
   <h3>{{ team.name }}</h3>
   {% for s in team.snapshots %}
-    <article class="member" style="-webkit-transform: rotate({{ range(-20, 20)|random }}deg){% if s.last_worked_status == 'now' %}; background-color: #efffef;{% endif %}">
+    <article class="member" style="-webkit-transform: rotate({{ range(-20, 20)|random }}deg){% if s.last_worked_status == 'now' %}; background-color: #dfd;{% endif %}">
     <a href="{{ s.profile_url }}" target="_blank"><img src="{% if s.portrait_img %}{{ s.portrait_img }}{% else %}{{ url_for('static', filename='nouser.png') }}{% endif %}" border="0" class="portrait">
     <div>
     <a href="{{ s.profile_url }}" target="_blank" class="username">{{ s.user.first_name }} {{ s.user.last_name }}</a>
     {% if s.last_worked_status == 'now' %}
-      <img src="https://chart.googleapis.com/chart?chs=100x20&cht=ls&chco=00cc00&chf=bg,s,efffef&chm=B,00cc00,0,0,0&chd=t:{{ s.online_presence }}">
+      <img src="https://chart.googleapis.com/chart?chs=96x20&cht=ls&chco=00cc00&chf=bg,s,ddffdd&chm=B,00cc00,0,0,0&chd=t:{{ s.online_presence }}">
     {% else %}
-      <img src="https://chart.googleapis.com/chart?chs=100x20&cht=ls&chco=cccccc&chf=bg,s,ffffcc&chm=B,cccccc,0,0,0&chd=t:{{ s.online_presence }}">
+      <img src="https://chart.googleapis.com/chart?chs=96x20&cht=ls&chco=cccccc&chf=bg,s,ffffcc&chm=B,cccccc,0,0,0&chd=t:{{ s.online_presence }}">
     {% endif %}
     </div>
     </article>
