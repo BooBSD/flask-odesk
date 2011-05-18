@@ -25,6 +25,7 @@ setup(
         'oauth2',
         'python-odesk>=0.4'
     ],
+    test_suite='tests',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',

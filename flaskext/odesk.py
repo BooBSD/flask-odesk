@@ -94,7 +94,7 @@ def complete():
         if not userteams.intersection(authteams):
             return "Access for your team is denied"
     session[ODESK_ACCESS_TOKEN] = access_token
-    flash("You were successfully logged in")
+    flash("You were logged in")
     return redirect(request.args.get('next', '/'))
 
 
@@ -113,4 +113,5 @@ def logout():
     Log out current user and redirect it to the next page
     """
     log_out()
+    flash("You were logged out")
     return redirect(request.args.get('next', '/'))
