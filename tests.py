@@ -41,6 +41,7 @@ class ODeskTestCase(unittest.TestCase):
         @odesk.login_required
         def admin():
             self.odesk_is_authorized = odesk.is_authorized()
+            self.odesk_access_token = odesk.get_access_token()
             odesk.logout()
             self.odesk_is_not_authorized = odesk.is_authorized()
             return "Welcome, oDesk user!"
@@ -48,6 +49,7 @@ class ODeskTestCase(unittest.TestCase):
         response = self.tc.get('/admin', follow_redirects=True)
         assert "Welcome" in response.data
         assert self.odesk_is_authorized == True
+        assert self.odesk_access_token == ('aedec833d41732a584d1a5b4959f9cd6', '9d9cccb363d2b13e')
         assert self.odesk_is_not_authorized == False
 
 

@@ -1,21 +1,21 @@
 {% extends "base.html" %}
 {% block title %}Your oDesk Team Room{% endblock %}
 {% block body %}
-<h2><a href="{{ url_for('team') }}">Your oDesk Team Room</a></h2>
-{% for team in teams %}
-  <h3>{{ team.name }}</h3>
-  {% for s in team.snapshots %}
-    <article class="member" style="-webkit-transform: rotate({{ range(-20, 20)|random }}deg){% if s.last_worked_status == 'now' %}; background-color: #dfd;{% endif %}">
-    <a href="{{ s.profile_url }}" target="_blank"><img src="{% if s.portrait_img %}{{ s.portrait_img }}{% else %}{{ url_for('static', filename='nouser.png') }}{% endif %}" border="0" class="portrait">
-    <div>
-    <a href="{{ s.profile_url }}" target="_blank" class="username">{{ s.user.first_name }} {{ s.user.last_name }}</a>
-    {% if s.last_worked_status == 'now' %}
-      <img src="https://chart.googleapis.com/chart?chs=96x20&cht=ls&chco=00cc00&chf=bg,s,ddffdd&chm=B,00cc00,0,0,0&chd=t:{{ s.online_presence }}">
-    {% else %}
-      <img src="https://chart.googleapis.com/chart?chs=96x20&cht=ls&chco=cccccc&chf=bg,s,ffffcc&chm=B,cccccc,0,0,0&chd=t:{{ s.online_presence }}">
-    {% endif %}
-    </div>
-    </article>
+  <h2><a href="{{ url_for('team') }}">Your oDesk Team Room</a></h2>
+  {% for team in teams %}
+    <h3>{{ team.name }}</h3>
+    {% for s in team.snapshots %}
+      <article class="member" style="-webkit-transform: rotate({{ range(-20, 20)|random }}deg); -o-transform: rotate({{ range(-20, 20)|random }}deg); -moz-transform: rotate({{ range(-20, 20)|random }}deg){% if s.last_worked_status == 'now' %}; background-color: #dfd;{% endif %}">
+        <a href="{{ s.profile_url }}" target="_blank"><img src="{% if s.portrait_img %}{{ s.portrait_img }}{% else %}{{ url_for('static', filename='nouser.png') }}{% endif %}" border="0" class="portrait">
+        <div>
+          <a href="{{ s.profile_url }}" target="_blank" class="username">{{ s.user.first_name }} {{ s.user.last_name }}</a>
+          {% if s.last_worked_status == 'now' %}
+            <img src="https://chart.googleapis.com/chart?chs=96x20&cht=ls&chco=00cc00&chf=bg,s,ddffdd&chm=B,00cc00,0,0,0&chd=t:{{ s.online_presence }}">
+          {% else %}
+            <img src="https://chart.googleapis.com/chart?chs=96x20&cht=ls&chco=cccccc&chf=bg,s,ffffcc&chm=B,cccccc,0,0,0&chd=t:{{ s.online_presence }}">
+          {% endif %}
+        </div>
+      </article>
+    {% endfor %}
   {% endfor %}
-{% endfor %}
 {% endblock %}

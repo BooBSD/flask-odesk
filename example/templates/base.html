@@ -1,33 +1,31 @@
 <!doctype html>
 <html>
-<head>
-<title>{% block title %}Flask-oDesk example{% endblock %}</title>
-<meta charset="utf-8">
-<link type="text/css" href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
-</head>
-<body>
-<header>
-<div id="logo">
-<a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='flask.png') }}" border="0"></a>
-<a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='odesk.png') }}" border="0"></a>
-</div>
-<nav>
-<ul>
-{% if odesk_is_authorized %}
-  <li><a href="{{ url_for('odesk.logout') }}">Log out</a></li>
-{% else %}
-  <li><a href="{{ url_for('odesk.login') }}">Log in via oDesk</a></li>
-{% endif %}
-</ul>
-</nav>
-</header>
-<section>
-{% block body %}{% endblock %}
-</section>
-<footer>
-<a href="http://www.w3.org/html/logo/">
-<img src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-semantics.png" height="32" alt="HTML5 Powered with CSS3 / Styling, and Semantics" title="HTML5 Powered with CSS3 / Styling, and Semantics">
-</a>
-</footer>
-</body>
+  <head>
+    <title>{% block title %}Flask-oDesk example{% endblock %}</title>
+    <meta charset="utf-8">
+    <link type="text/css" href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <div id="logo">
+        <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='flask.png') }}" border="0"></a>
+        <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='odesk.png') }}" border="0"></a>
+      </div>
+      <nav>
+        <ul>
+        {% if odesk_is_authorized %}
+          <li><a href="{{ url_for('odesk.logout') }}">Log out</a></li>
+        {% else %}
+          <li><a href="{{ url_for('odesk.login') }}">Log in via oDesk</a></li>
+        {% endif %}
+        </ul>
+      </nav>
+    </header>
+    <section>{% block body %}{% endblock %}</section>
+    <footer>
+      <a href="http://www.w3.org/html/logo/">
+        <img src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-semantics.png" height="32" alt="HTML5 Powered with CSS3 / Styling, and Semantics" title="HTML5 Powered with CSS3 / Styling, and Semantics" border="0">
+      </a>
+    </footer>
+  </body>
 </html>
