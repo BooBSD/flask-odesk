@@ -20,6 +20,7 @@ class ODeskTestCase(unittest.TestCase):
 
     def test_url_for(self):
         assert url_for('odesk.login') == '/odesk/login'
+        assert url_for('odesk.complete') == '/odesk/complete'
         assert url_for('odesk.logout') == '/odesk/logout'
 
 
