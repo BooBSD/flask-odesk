@@ -47,7 +47,7 @@ def get_client(*access_token):
     if access_token:
         c.oauth_access_token, c.oauth_access_token_secret = access_token
     elif ODESK_ACCESS_TOKEN in session:
-        c.oauth_access_token, c.oauth_access_token_secret = session[ODESK_ACCESS_TOKEN]
+        c.oauth_access_token, c.oauth_access_token_secret = session.get(ODESK_ACCESS_TOKEN, [None]*2)
     return c
 odesk.get_client = get_client
 
@@ -82,17 +82,19 @@ def complete():
     End authorization process
     """
     c = get_client()
-    c.auth.request_token, c.auth.request_token_secret = session[ODESK_REQUEST_TOKEN]
+    c.auth.request_token, c.auth.request_token_secret = session.get(ODESK_REQUEST_TOKEN, [None]*2)
     if ODESK_REQUEST_TOKEN in session:
         del session[ODESK_REQUEST_TOKEN]
-    verifier = request.args.get('oauth_verifier')
-    access_token = c.auth.get_access_token(verifier)
+    try:
+        access_token = c.auth.get_access_token(request.args.get('oauth_verifier'))
+    except Exception, e:
+        return e, 401
     authteams = current_app.config.get('ODESK_AUTH_TEAMS', ())
     if authteams:
         c.oauth_access_token, c.oauth_access_token_secret = access_token
         userteams = set(team['id'] for team in c.hr.get_teams())
         if not userteams.intersection(authteams):
-            return "Access for your team is denied"
+            return "Access for your team is denied", 401
     session[ODESK_ACCESS_TOKEN] = access_token
     flash("You were logged in")
     return redirect(request.args.get('next', '/'))
