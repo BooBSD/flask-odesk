@@ -92,6 +92,15 @@ It simply deletes the OAuth session. You should return response manually::
         odesk.logout()
         return redirect('/')
 
+If you want to expand autorization process, you can use `after_login` decorator,
+that indicates your function, which will be called after successfully authorization::
+
+    @odesk.after_login
+    def log_current_user():
+        # Getting current user's data. Please, see below how to use the Client.
+        user = odesk.get_client().hr.get_user('me')
+        app.logger.debug(user)
+
 
 Using client
 ============

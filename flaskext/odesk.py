@@ -65,6 +65,15 @@ def login_required(f):
 odesk.login_required = login_required
 
 
+def after_login(f):
+    """
+    Decorator that indicates function, which will be called after successfully authorization
+    """
+    odesk.after_login_func = f
+    return f
+odesk.after_login = after_login
+
+
 @odesk.route('/login')
 def login(next=None):
     """
@@ -96,6 +105,8 @@ def complete():
         if not userteams.intersection(authteams):
             return "Access for your team is denied", 401
     session[ODESK_ACCESS_TOKEN] = access_token
+    if hasattr(odesk, 'after_login_func'):
+        odesk.after_login_func()
     flash("You were logged in")
     return redirect(request.args.get('next', '/'))
 
