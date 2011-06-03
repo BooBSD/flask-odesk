@@ -40,6 +40,7 @@ nav ul {
 
 nav li {
     display: inline;
+    margin-left: 1em;
 }
 
 nav a {
