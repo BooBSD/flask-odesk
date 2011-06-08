@@ -60,7 +60,7 @@ Please use the decorator `login_required` to close the access for anonymous user
 If you want to indicate login or logout links in the template, than you can use `url_for` function and `odesk_is_authorized` variable::
 
     {% if odesk_is_authorized %}
-      <a href="{{ url_for('odesk.logout') }}">oDesk log out</a>
+      <a href="{{ url_for('odesk.logout') }}">Log out</a>
     {% else %}
       <a href="{{ url_for('odesk.login') }}">oDesk log in</a>
     {% endif %}
@@ -105,7 +105,8 @@ do not forget to delete this session after logging out, using decorator `after_l
 
     @odesk.after_logout
     def delete_session():
-        del session['user']
+        if 'user' in session:
+            del session['user']
 
 
 Using client

@@ -32,7 +32,8 @@ def save_user_session():
 
 @odesk.after_logout
 def delete_user_session():
-    del session['user']
+    if 'user' in session:
+        del session['user']
 
 
 app.run()
